@@ -8,30 +8,33 @@ const About = () => {
             <h1 className="title-hero fade-in">About</h1>
             <div className="fade-in" style={{ animationDelay: '0.2s' }}>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                    I’m a structural and computational engineer working at the intersection of geometry, code, and construction.
-                    My practice focuses on the development of structural systems through parametric workflows,
-                    advanced analysis, and a close engagement with fabrication and assembly.
+                    I conceive the scaffolding of the world other people dream about.
+                    That's the closest I've found to an honest answer when someone asks what I do. I make strange things — complex geometries,
+                     unlikely arrangements — that somehow end up being beautiful. I make them stand. I make them work. And I do it while holding the hand of the designer,
+                     quietly steering through the constraints of physics, making sure no one in the room ever feels those constraints exist at all.
+                   
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                    I’m drawn to complexity not as an aesthetic goal, but as a natural condition. Structure, like astronomy or biology,
-                    follows rules that are both strict and poetic. Forces propagate, systems interact, patterns repeat at different scales.
-                    A beam, a canopy, or a façade is never isolated; it belongs to a larger ecosystem of material, fabrication, economy, and use.
-                    My work tries to remain attentive to these connections.
+                     I am an engineer. But I am also a person who would rather be watching the stars, carving wood, or disappearing into the Jura mountains on a bike for 300 kilometers with my wife.
+                     These things are not separate from my work. They are why my work looks the way it does.
+                    
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                    My thinking is influenced by engineers such as Peter Rice, by systems theory, and by scientific fields where intuition
-                    and rigor coexist. Computation, for me, is not about efficiency alone, nor about automation as an end goal. It is a way to extend
-                    intuition, to test assumptions, to explore variation, and to reveal relationships that would otherwise remain invisible.
+                   I write code that generates steel reinforcement for concrete shells from principal stress fields at mesh vertices.
+                   I also assemble IKEA furniture with genuine satisfaction. Both of these feel like the same thing to me — understanding a system well
+                    enough to make it do exactly what you need.
+                    
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
-                    I work across scales and design stages, from early conceptual geometry to detailed structural design and fabrication logic.
-                    This often involves developing custom digital tools, prototyping assemblies, and working closely with architects and fabricators.
-                    I’m interested in structures that are efficient but not mute, rational yet expressive, and that make legible the forces and
-                    constraints that shape them.
+                    I am drawn to organic forms and to minimalism. To the richness of architecture built before someone decided repetition was progress. I believe Thomas Heatherwick
+                     is right: design needs to be humanized. We have spent decades formatting people into a one-size-fits-all world, and it is making everything — our buildings,
+                      our cities, our tools, our lives — quietly unbearable. I want to push against that, one project at a time.
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
-                    At its core, my practice treats engineering as a form of thinking about life: how systems organize, how matter resists and adapts,
-                    and how clarity can emerge from complexity.
+                    Music saved my life. I'll leave that there because it deserves its own space.
+What I want, professionally, is for engineers to stop being calculators. The calculator part is the easy part. The hard part is having taste,
+ conviction, and the courage to drive something — not just verify it.
+That's what I'm here to do.
                 </p>
             </div>
 
