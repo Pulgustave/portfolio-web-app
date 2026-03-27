@@ -74,7 +74,7 @@ const Portfolio = () => {
                 {filteredProjects.map((project, index) => (
                     <div key={project.id} className="fade-in" style={{
                         animationDelay: `${0.2 + (index * 0.1)}s`,
-                        background: `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url(${project.image})`,
+                        background: project.image ? `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url(${project.image})` : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(20,20,20,1) 100%)',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         border: '1px solid rgba(255, 255, 255, 0.1)',

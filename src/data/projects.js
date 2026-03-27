@@ -8,7 +8,6 @@ export const projects = [
         id: 1, 
         title: 'Computational Engineer for TVM at CRAFT engineering studio', 
         categories: ['Computational Design', 'Structural Design', 'Confidential'], 
-        image: LV_THEVERYMANY_Milan1, // Kept the thumbnail per your request
         description: 'Projects include Pavilion Nomad (Milan 2023), TheVeryMany London, and TheVeryMany Singapour. These projects and their specific structural engineering details are confidential.',
         detailImages: [] // Empty array = no pictures shown on the details page
     },
