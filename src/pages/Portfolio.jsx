@@ -1,10 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
+import projectPlaceholder from '../assets/project_placeholder.png';
 
 const Portfolio = () => {
     const navigate = useNavigate();
     const [filter, setFilter] = useState('All');
+    
+    // Instead of coordinate tracking, we just track which item is hovered 
+    // to fade in the bottom-left pill box.
+    const [hoveredProject, setHoveredProject] = useState(null);
 
     // Dynamically get unique categories
     const categories = useMemo(() => {
@@ -19,14 +24,14 @@ const Portfolio = () => {
     }, [filter]);
 
     return (
-        <div style={{ padding: '2rem var(--page-padding)' }}>
+        <div style={{ padding: '2rem var(--page-padding)', position: 'relative', minHeight: '100vh' }}>
             <h1 className="title-hero fade-in">Selected Works</h1>
 
             {/* Filter UI */}
             <div className="fade-in" style={{
-                marginBottom: '3rem',
+                marginBottom: '4rem',
                 display: 'flex',
-                gap: '1rem',
+                gap: '1.5rem',
                 flexWrap: 'wrap',
                 animationDelay: '0.1s'
             }}>
@@ -35,31 +40,27 @@ const Portfolio = () => {
                         key={cat}
                         onClick={() => setFilter(cat)}
                         style={{
-                            background: filter === cat ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.03)',
-                            color: filter === cat ? 'var(--bg-color)' : 'var(--text-secondary)',
-                            border: `1px solid ${filter === cat ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.08)'}`,
-                            padding: '0.6rem 1.8rem',
+                            background: filter === cat ? 'rgba(255,255,255,0.1)' : 'transparent',
+                            color: filter === cat ? 'var(--text-primary)' : 'var(--text-secondary)',
+                            border: '1px solid',
+                            borderColor: filter === cat ? 'rgba(255,255,255,0.2)' : 'transparent',
+                            padding: '0.4rem 1.2rem',
                             borderRadius: '2rem',
                             cursor: 'pointer',
                             fontSize: '0.85rem',
-                            fontWeight: '600',
-                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                            fontWeight: '500',
+                            transition: 'all 0.3s ease',
                             fontFamily: 'var(--font-main)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.08em'
+                            letterSpacing: '0.05em'
                         }}
                         onMouseEnter={(e) => {
                             if (filter !== cat) {
-                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
                                 e.currentTarget.style.color = 'var(--text-primary)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
                             }
                         }}
                         onMouseLeave={(e) => {
                             if (filter !== cat) {
-                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
                                 e.currentTarget.style.color = 'var(--text-secondary)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
                             }
                         }}
                     >
@@ -70,45 +71,76 @@ const Portfolio = () => {
 
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: '2rem',
+                // Larger columns for a premium 3-column feel on wide screens
+                gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
+                gap: '2.5rem',
             }}>
-                {filteredProjects.map((project, index) => (
-                    <div key={project.id} className="fade-in" style={{
-                        animationDelay: `${0.2 + (index * 0.1)}s`,
-                        background: project.image ? `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url(${project.image})` : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(20,20,20,1) 100%)',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        border: '1px solid rgba(255, 255, 255, 0.05)',
-                        padding: '2.5rem',
-                        aspectRatio: '1',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                        cursor: 'pointer',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        borderRadius: '0.5rem'
-                    }}
-                        onClick={() => navigate(`/portfolio/${project.id}`)}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                            e.currentTarget.style.transform = 'translateY(-4px)';
-                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
+                {filteredProjects.map((project, index) => {
+                    const isHovered = hoveredProject === project.id;
+                    const hasRealImage = project.image && project.image !== projectPlaceholder;
+                    
+                    return (
+                        <div key={project.id} className="fade-in" style={{
+                            animationDelay: `${0.2 + (index * 0.1)}s`,
+                            // Remove the gradient. If there's an image, use it perfectly clean. 
+                            // Otherwise, fallback to a sleek solid black as requested.
+                            background: hasRealImage ? `url(${project.image})` : '#0d0d0f',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            aspectRatio: '1.33 / 1', // standard 4:3
+                            borderRadius: '1.2rem', // sleek rounded corners
+                            display: 'flex',
+                            transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                            cursor: 'pointer',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            border: hasRealImage ? 'none' : '1px solid rgba(255, 255, 255, 0.05)'
                         }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
-                        }}
-                    >
-                        <h3 style={{ fontSize: '1.4rem', fontWeight: '700', marginBottom: '0.5rem', zIndex: 2, letterSpacing: '-0.02em', lineHeight: '1.2' }}>{project.title}</h3>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', zIndex: 2, letterSpacing: '0.02em', textTransform: 'uppercase' }}>
-                            {project.categories.join(' / ')}
-                        </p>
-                    </div>
-                ))}
+                            onClick={() => navigate(`/portfolio/${project.id}`)}
+                            onMouseEnter={() => setHoveredProject(project.id)}
+                            onMouseLeave={() => setHoveredProject(null)}
+                        >
+                            {/* Robert Licau style: Bottom left absolute pill box */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '1.5rem',
+                                left: '1.5rem',
+                                maxWidth: 'calc(100% - 3rem)', // Prevent from overflowing the right edge
+                                padding: '0.6rem 1rem',
+                                background: 'rgba(50, 50, 50, 0.5)', 
+                                backdropFilter: 'blur(12px)',
+                                WebkitBackdropFilter: 'blur(12px)',
+                                borderRadius: '1.5rem', // Slightly smaller radius to accommodate multiple lines gracefully
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.75rem',
+                                opacity: isHovered ? 1 : 0,
+                                transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
+                                transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
+                                pointerEvents: 'none'
+                            }}>
+                                <span style={{
+                                    color: '#ffffff',
+                                    fontSize: '0.85rem',
+                                    fontWeight: '500',
+                                    fontFamily: 'var(--font-main)',
+                                    textAlign: 'left', // Keep text left aligned when wrapping
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 2, // Restrict to maximum 2 lines
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
+                                    lineHeight: '1.3'
+                                }}>
+                                    {project.title}
+                                </span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{color: '#ffffff', flexShrink: 0}}>
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
