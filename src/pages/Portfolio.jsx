@@ -35,29 +35,31 @@ const Portfolio = () => {
                         key={cat}
                         onClick={() => setFilter(cat)}
                         style={{
-                            background: filter === cat ? 'var(--accent-color)' : 'rgba(255, 255, 255, 0.05)',
-                            color: filter === cat ? '#000' : 'var(--text-secondary)',
-                            border: `1px solid ${filter === cat ? 'var(--accent-color)' : 'rgba(255, 255, 255, 0.1)'}`,
-                            padding: '0.5rem 1.5rem',
+                            background: filter === cat ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.03)',
+                            color: filter === cat ? 'var(--bg-color)' : 'var(--text-secondary)',
+                            border: `1px solid ${filter === cat ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.08)'}`,
+                            padding: '0.6rem 1.8rem',
                             borderRadius: '2rem',
                             cursor: 'pointer',
-                            fontSize: '0.9rem',
+                            fontSize: '0.85rem',
                             fontWeight: '600',
-                            transition: 'all 0.3s ease',
+                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                             fontFamily: 'var(--font-main)',
                             textTransform: 'uppercase',
-                            letterSpacing: '0.05em'
+                            letterSpacing: '0.08em'
                         }}
                         onMouseEnter={(e) => {
                             if (filter !== cat) {
-                                e.currentTarget.style.borderColor = 'var(--text-primary)';
+                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
                                 e.currentTarget.style.color = 'var(--text-primary)';
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
                             }
                         }}
                         onMouseLeave={(e) => {
                             if (filter !== cat) {
-                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
                                 e.currentTarget.style.color = 'var(--text-secondary)';
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
                             }
                         }}
                     >
@@ -77,31 +79,32 @@ const Portfolio = () => {
                         background: project.image ? `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url(${project.image})` : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(20,20,20,1) 100%)',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        padding: '2rem',
+                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                        padding: '2.5rem',
                         aspectRatio: '1',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                         cursor: 'pointer',
                         position: 'relative',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        borderRadius: '0.5rem'
                     }}
                         onClick={() => navigate(`/portfolio/${project.id}`)}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = 'var(--accent-color)';
-                            e.currentTarget.style.transform = 'translateY(-5px)';
-                            e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.1)';
+                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
                             e.currentTarget.style.transform = 'translateY(0)';
                             e.currentTarget.style.boxShadow = 'none';
                         }}
                     >
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', zIndex: 2 }}>{project.title}</h3>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', zIndex: 2 }}>
+                        <h3 style={{ fontSize: '1.4rem', fontWeight: '700', marginBottom: '0.5rem', zIndex: 2, letterSpacing: '-0.02em', lineHeight: '1.2' }}>{project.title}</h3>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', zIndex: 2, letterSpacing: '0.02em', textTransform: 'uppercase' }}>
                             {project.categories.join(' / ')}
                         </p>
                     </div>
