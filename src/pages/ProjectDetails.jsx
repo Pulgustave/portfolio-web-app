@@ -64,7 +64,7 @@ const ProjectDetails = () => {
                     ))}
                 </div>
 
-                <p style={{ lineHeight: '1.7', fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '800px' }}>
+                <p style={{ lineHeight: '1.7', fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '800px', whiteSpace: 'pre-wrap' }}>
                     {project.description}
                 </p>
             </div>
