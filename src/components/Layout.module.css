@@ -1,0 +1,33 @@
+.layout {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+    padding-top: var(--nav-height);
+    /* Make space for fixed header */
+    position: relative;
+    z-index: 10;
+    /* Above background */
+    overflow-y: auto;
+    /* Allow scrolling content */
+    display: flex;
+    flex-direction: column;
+}
+
+.backgroundPlaceholder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    /* Fallback */
+    pointer-events: all;
+    /* Needs to capture mouse for P5 later */
+}
