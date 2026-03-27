@@ -63,8 +63,12 @@ export const projects = [
         id: 9, 
         title: 'Odyssey - Sanford Biggers Studio', 
         categories: ['Computational Design', 'Structural Engineering', 'Portland, OR'], 
-        image: projectPlaceholder, 
+        image: 'https://craftengin.com/wp-content/uploads/2025/03/Odyssey-007.jpg', 
         description: 'Odyssey is a pair of fully suspended sculptures by Sanford Biggers Studio, located in the new mass-timber terminal at Portland International Airport. The artwork consists of custom DiBond aluminum graphic panels supported by lightweight aluminum tube frames and hung from near-invisible stainless steel aircraft cables to create a seamless illusion of floating above deplaning passengers. \n\nMy work as a structural engineer at CRAFT focused on the FEA modeling of the suspension system, utilizing linear and nonlinear large-deformation analysis to simulate the delicate balance of a suspended mass on tension-only cables under gravity and seismic loads. Positioned in a seismically active zone with proximity to full-height glazing walls, the sculptures required a highly coordinated bracing strategy. We designed diagonal cables to prevent lateral sway toward the glass, while allowing controlled free-sway in all other directions, carefully verified against the airport\'s 3D BIM to avoid clashes with architectural finishes. Custom connection brackets were also developed and analyzed using solid element analysis to securely attach the artwork to both the delicate aluminum frames and the massive timber ceiling trellis. \n\nFabrication: JunoWorks | Engineering: CRAFT Engineering Studio',
-        detailImages: [projectPlaceholder, projectPlaceholder, projectPlaceholder]
+        detailImages: [
+            'https://craftengin.com/wp-content/uploads/2025/03/Odyssey-007.jpg',
+            'https://craftengin.com/wp-content/uploads/2025/03/Odyssey-008.jpg',
+            'https://craftengin.com/wp-content/uploads/2025/03/Odyssey-009.jpg'
+        ]
     },
 ];
