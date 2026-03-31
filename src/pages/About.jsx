@@ -8,33 +8,26 @@ const About = () => {
             <h1 className="title-hero fade-in">About</h1>
             <div className="fade-in" style={{ animationDelay: '0.2s' }}>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                    I conceive the scaffolding of the world other people dream about.
-                    That's the closest I've found to an honest answer when someone asks what I do. I make strange things — complex geometries,
-                     unlikely arrangements — that somehow end up being beautiful. I make them stand. I make them work. And I do it while holding the hand of the designer,
-                     quietly steering through the constraints of physics, making sure no one in the room ever feels those constraints exist at all.
-                   
+                    I want to understand the world.
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                     I am an engineer. But I am also a person who would rather be watching the stars, carving wood, or disappearing into the Jura mountains on a bike for 300 kilometers with my wife.
-                     These things are not separate from my work. They are why my work looks the way it does.
-                    
+                    A learner first — pequeño saltamontes — always pulling at threads to see what unravels. Not because I expect to find the end of them, but because the pulling itself is the point. I've accepted that. Took longer than I'd like to admit.
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                   I write code that generates steel reinforcement for concrete shells from principal stress fields at mesh vertices.
-                   I also assemble IKEA furniture with genuine satisfaction. Both of these feel like the same thing to me — understanding a system well
-                    enough to make it do exactly what you need.
-                    
+                    Engineer by chance, computational designer by choice, after a long and occasionally painful search for problems interesting enough to justify the attention. The path wasn't straight. It rarely is when you're guided more by curiosity than by plan.
+                </p>
+                <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                    I'd call myself a breaker rather than a fixer. It took me a while to admit that too. For a long time I tried to be useful in the ways people expected — contained, reliable, solving the problem as stated. But the only thing that truly feeds me is to experiment, push, stay uncontained — by systems, by disciplines, by my own previous conclusions. Breaking things is how I learn what they're actually made of.
+                </p>
+                <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                    By day I work on design: forces, systems, algorithms. The kind of work that lives at the edge of what computers can describe and what humans can intuit. It's interesting enough. Fun enough. It keeps me going, and some days it's genuinely beautiful.
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
-                    I am drawn to organic forms and to minimalism. To the richness of architecture built before someone decided repetition was progress. I believe Thomas Heatherwick
-                     is right: design needs to be humanized. We have spent decades formatting people into a one-size-fits-all world, and it is making everything — our buildings,
-                      our cities, our tools, our lives — quietly unbearable. I want to push against that, one project at a time.
+                    The rest of the time I follow my own threads — projects, ideas, half-finished obsessions that probably look like chaos from the outside but feel like breathing from the inside. It's how I keep my sanity. How I stay honest with myself. How I let the world be what it is rather than what I think it should be. A way to lose control, on purpose, without apology.
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
-                    Music saved my life. I'll leave that there because it deserves its own space.
-What I want, professionally, is for engineers to stop being calculators. The calculator part is the easy part. The hard part is having taste,
- conviction, and the courage to drive something — not just verify it.
-That's what I'm here to do.
+                    Music, art, astronomy, bikes, and calisthenics — when I'm not trying to talk to computers, or when the computers aren't listening.<br />
+                    Making mistakes since the late eighties. Still at it.
                 </p>
             </div>
 
