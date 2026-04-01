@@ -27,7 +27,6 @@ const About = () => {
                 </p>
                 <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
                     Music, art, astronomy, bikes, and calisthenics — when I'm not trying to talk to computers, or when the computers aren't listening.<br />
-                    Making mistakes since the late eighties. Still at it.
                 </p>
             </div>
 
