@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
+import ReactMarkdown from 'react-markdown';
 
 const ProjectDetails = () => {
     const { id } = useParams();
@@ -48,9 +49,9 @@ const ProjectDetails = () => {
 
             {/* Header Section */}
             <div style={{ marginBottom: '4rem' }}>
-                <h1 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--accent-color)', lineHeight: '1.1' }}>{project.title}</h1>
+                <h1 className="project-details-title">{project.title}</h1>
                 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '2rem' }}>
                     {project.categories.map(cat => (
                         <span key={cat} style={{
                             padding: '0.35rem 1rem',
@@ -64,32 +65,34 @@ const ProjectDetails = () => {
                     ))}
                 </div>
 
-                <p style={{ lineHeight: '1.7', fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '800px', whiteSpace: 'pre-wrap' }}>
-                    {project.description}
-                </p>
-            </div>
-
-            {/* Vertical "Blog" Images Section */}
-            {project.detailImages && project.detailImages.length > 0 && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center' }}>
-                    {project.detailImages.map((img, index) => (
-                        <div key={index} style={{
-                            width: '100%',
-                            maxWidth: '700px', // Restricts to a tasteful column width
-                            aspectRatio: '3/4', // Portrait orientation
-                            overflow: 'hidden',
-                            borderRadius: '8px',
-                            background: 'rgba(255, 255, 255, 0.05)' // Subtle background while loading
-                        }}>
-                            <img src={img} alt={`${project.title} detail ${index + 1}`} style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover'
-                            }} />
-                        </div>
-                    ))}
+                {/* Markdown Content Section */}
+                <div className="project-markdown-container">
+                    <ReactMarkdown
+                        components={{
+                            p: ({node, ...props}) => <p className="project-details-desc" style={{ marginBottom: '1.5rem' }} {...props} />,
+                            img: ({node, ...props}) => (
+                                <div style={{
+                                    width: '100%',
+                                    maxWidth: '700px', 
+                                    aspectRatio: '3/4', 
+                                    overflow: 'hidden',
+                                    borderRadius: '8px',
+                                    background: 'rgba(255, 255, 255, 0.05)',
+                                    margin: '3rem auto' // centered block
+                                }}>
+                                    <img {...props} style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover'
+                                    }} />
+                                </div>
+                            )
+                        }}
+                    >
+                        {project.description}
+                    </ReactMarkdown>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

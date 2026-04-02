@@ -25,7 +25,7 @@ const Portfolio = () => {
 
     return (
         <div style={{ padding: '2rem var(--page-padding)', position: 'relative', minHeight: '100vh' }}>
-            <h1 className="title-hero fade-in">Selected Works</h1>
+            <h1 className="title-hero fade-in">Design Work</h1>
 
             {/* Filter UI */}
             <div className="fade-in" style={{

@@ -100,3 +100,33 @@ a {
   color: var(--accent-color);
   -webkit-text-fill-color: var(--accent-color);
 }
+
+/* Project Details specific typography */
+.project-details-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.project-details-desc {
+  line-height: 1.7;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .title-hero {
+    font-size: 2.5rem;
+  }
+  .project-details-title {
+    font-size: 2rem;
+  }
+  .project-details-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
