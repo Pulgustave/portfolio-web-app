@@ -25,7 +25,7 @@ const Portfolio = () => {
 
     return (
         <div style={{ padding: '2rem var(--page-padding)', position: 'relative', minHeight: '100vh' }}>
-            <h1 className="title-hero fade-in">Design Work</h1>
+            <h1 className="title-hero fade-in">Projects</h1>
 
             {/* Filter UI */}
             <div className="fade-in" style={{
@@ -71,8 +71,8 @@ const Portfolio = () => {
 
             <div style={{
                 display: 'grid',
-                // Larger columns for a premium 3-column feel on wide screens
-                gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
+                // Smaller min-width to ensure at least 3 columns on standard screens
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
                 gap: '2.5rem',
             }}>
                 {filteredProjects.map((project, index) => {
