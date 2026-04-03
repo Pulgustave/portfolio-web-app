@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRAFT Aladdin — Command Map</title>
+<style>
+  :root {
+      --bg:     #0d0d0f; /* Matched portfolio dark theme */
+      --bg2:    #272725;
+      --text:   #f5f5f5;
+      --text2:  #a8a69e;
+      --text3:  #666460;
+      --border: rgba(255,255,255,0.1);
+      --border2:rgba(255,255,255,0.2);
+      --mono:     'Courier New', monospace;
+      --sans:     system-ui, -apple-system, sans-serif;
+      --r-md:     8px;
+      --r-lg:     12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    padding: 20px 16px 24px;
+    min-height: 100vh;
+  }
+
+  /* Timeline */
+  .timeline { display: flex; position: relative; margin-bottom: 24px; }
+  .tline { position: absolute; top: 14px; left: 10%; right: 10%; height: 0.5px; background: var(--border2); }
+  .phase { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+  .pdot { width: 9px; height: 9px; border-radius: 50%; border: 0.5px solid var(--border2); background: var(--bg); margin-bottom: 7px; }
+  .pdot.active { background: var(--text2); }
+  .plabel { font-size: 9px; font-weight: 600; color: var(--text3); letter-spacing: .07em; text-align: center; line-height: 1.35; }
+
+  /* Cards grid */
+  .cols { display: flex; gap: 8px; margin-bottom: 18px; }
+  .col  { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .tc {
+    border: 0.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 10px 10px 10px 14px;
+    cursor: pointer;
+    background: var(--bg);
+    transition: border-color .12s, background .12s;
+    position: relative; overflow: hidden;
+  }
+  .tc::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; }
+  .c1::before { background:#378ADD; }
+  .c2::before { background:#1D9E75; }
+  .c3::before { background:#BA7517; }
+  .c4::before { background:#7F77DD; }
+  .c5::before { background:#D85A30; }
+  .tc:hover { border-color: var(--border2); background: var(--bg2); }
+  .tc.sel   { background: var(--bg2); border-color: var(--border2); }
+  .ghost    { border-style: dashed; cursor: default; opacity: .4; }
+  .tid   { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-bottom: 3px; }
+  .tname { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .tblurb { font-size: 11px; color: var(--text2); margin-top: 3px; line-height: 1.4; }
+
+  /* Detail panel */
+  .dp {
+    border: 0.5px solid var(--border2);
+    border-radius: var(--r-lg);
+    padding: 16px;
+    background: var(--bg);
+    display: none;
+    margin-bottom: 18px;
+  }
+  .dp.show { display: block; }
+  .dtop { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .did  { font-family: var(--mono); font-size: 11px; color: var(--text2); }
+  .dname { font-size: 15px; font-weight: 600; color: var(--text); }
+  .dcols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .dcols { grid-template-columns: 1fr; } .cols { flex-wrap: wrap; } .col { min-width: 45%; } }
+  .dlabel { font-size: 10px; font-weight: 600; letter-spacing: .07em; color: var(--text3); margin-bottom: 6px; }
+  .dtext  { font-size: 12px; color: var(--text2); line-height: 1.55; }
+  .li {
+    font-size: 11px; color: var(--text2); padding: 4px 0;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; gap: 6px; align-items: flex-start; line-height: 1.4;
+  }
+  .li:last-child { border-bottom: none; }
+  .lb { color: var(--text3); flex-shrink: 0; margin-top: 1px; }
+
+  /* Philosophy bar */
+  .philbar {
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border);
+    display: flex; gap: 0; flex-wrap: wrap;
+    align-items: center;
+  }
+  .ph { display: flex; align-items: center; gap: 7px; padding: 4px 16px 4px 0; }
+  .phd { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .pht { font-size: 11px; color: var(--text2); }
+  .badge { margin-left: auto; font-size: 10px; color: var(--text3); font-family: var(--mono); padding: 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- Timeline -->
+<div class="timeline">
+  <div class="tline"></div>
+  <div class="phase"><div class="pdot active"></div><div class="plabel">PROJECT<br>SETUP</div></div>
+  <div class="phase"><div class="pdot"></div><div class="plabel">GRID &<br>STRUCTURE</div></div>
+  <div class="phase"><div class="pdot"></div><div class="plabel">ARCH<br>COORDINATION</div></div>
+  <div class="phase"><div class="pdot"></div><div class="plabel">DOCUMENTATION</div></div>
+  <div class="phase"><div class="pdot active"></div><div class="plabel">DELIVERY</div></div>
+</div>
+
+<!-- Command cards -->
+<div class="cols">
+  <div class="col">
+    <div class="tc c5" data-id="B7" onclick="pick('B7')">
+      <div class="tid">B7</div>
+      <div class="tname">Clean Slate</div>
+      <div class="tblurb">Dependency-ordered model reset</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="tc c2" data-id="B2" onclick="pick('B2')">
+      <div class="tid">B2</div>
+      <div class="tname">Grid Renaming</div>
+      <div class="tblurb">S-1/S-A by orientation</div>
+    </div>
+    <div class="tc c2" data-id="B3" onclick="pick('B3')">
+      <div class="tid">B3</div>
+      <div class="tname">Grid Dimensions</div>
+      <div class="tblurb">Dimension strings from sorted grids</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="tc c3" data-id="B5" onclick="pick('B5')">
+      <div class="tid">B5</div>
+      <div class="tname">Wall Openings</div>
+      <div class="tblurb">Auto — linked model by phase</div>
+    </div>
+    <div class="tc c3" data-id="B6" onclick="pick('B6')">
+      <div class="tid">B6</div>
+      <div class="tname">Wall Openings V2</div>
+      <div class="tblurb">Manual — user-selected windows</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="tc c1" data-id="B1" onclick="pick('B1')">
+      <div class="tid">B1</div>
+      <div class="tname">Column UP/DOWN</div>
+      <div class="tblurb">Tags by base/top level logic</div>
+    </div>
+    <div class="tc c4" data-id="B4" onclick="pick('B4')">
+      <div class="tid">B4</div>
+      <div class="tname">Align Framing Views</div>
+      <div class="tblurb">Viewport box-center alignment</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="tc ghost">
+      <div class="tid">B8+</div>
+      <div class="tname" style="color:var(--text3)">In development</div>
+      <div class="tblurb">Hazard loads, arch halftone...</div>
+    </div>
+  </div>
+</div>
+
+<!-- Detail panel -->
+<div class="dp" id="dp">
+  <div class="dtop">
+    <span class="did" id="d-id"></span>
+    <span class="dname" id="d-name"></span>
+  </div>
+  <div class="dcols">
+    <div>
+      <div class="dlabel">PROBLEM IT SOLVES</div>
+      <div class="dtext" id="d-prob"></div>
+    </div>
+    <div>
+      <div class="dlabel">APPROACH</div>
+      <div class="dtext" id="d-how"></div>
+    </div>
+    <div>
+      <div class="dlabel">EMBEDDED DECISIONS</div>
+      <div id="d-logic"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Philosophy bar -->
+<div class="philbar">
+  <div class="ph"><div class="phd" style="background:#378ADD"></div><div class="pht">Deterministic rules → automatable</div></div>
+  <div class="ph"><div class="phd" style="background:#1D9E75"></div><div class="pht">Engineer confirms, tool executes</div></div>
+  <div class="ph"><div class="phd" style="background:#BA7517"></div><div class="pht">Linked model as source of truth</div></div>
+  <div class="ph"><div class="phd" style="background:#7F77DD"></div><div class="pht">Fail safely, report clearly</div></div>
+  <div class="badge">CRAFT Aladdin · 7 commands · C# Revit API</div>
+</div>
+
+<script>
+const T = {
+  B7: {
+    name: 'Clean Slate',
+    prob: 'Templates accumulate debris from past projects. Deleting in the wrong order causes dependency errors — tags before geometry, openings before walls.',
+    how: 'Single transaction: unpin pass → annotations → beam systems → slabs → framing → columns → walls → groups → catch-all. WarningSwallower preprocessor keeps the transaction alive. Levels and views protected unconditionally.',
+    logic: ['Annotations first — they depend on geometry','Walls after framing — framing may host families','Levels and views are unconditionally protected','Batching (60–300 per chunk) prevents timeout','Warning preprocessor absorbs Revit conflicts']
+  },
+  B2: {
+    name: 'Grid Renaming',
+    prob: 'Grids arrive unnamed or inconsistently named. Renaming 40 grids to office convention by hand — every project.',
+    how: 'Direction vector magnitude (|X| vs |Y|) determines orientation. Vertical grids sorted by midpoint X (left→right), horizontal by midpoint Y (descending = top→bottom). S-1/S-A convention applied in an atomic transaction.',
+    logic: ['Vector direction handles skewed grids','Midpoint sort is stable vs endpoint sort','Descending Y = top-to-bottom reading order','Full rollback if any rename fails']
+  },
+  B3: {
+    name: 'Grid Dimensions',
+    prob: 'After renaming, dimension strings need placing precisely. Constant zoom-and-click per axis.',
+    how: 'Builds a ReferenceArray per orientation group, picks topmost/rightmost endpoint as anchor, offsets 0.5 ft, calls doc.Create.NewDimension in the active view.',
+    logic: ['Active view scope — lands in the right view','Topmost endpoint → consistent placement','0.5 ft offset is a named constant — tunable','Separate calls for horizontal and vertical']
+  },
+  B5: {
+    name: 'Wall Openings (Auto)',
+    prob: 'Structural models need openings matching the architect\'s windows. Reading a linked model, filtering by phase, placing families — per window, per project.',
+    how: 'Reads linked model, prompts for phase, filters via PHASE_CREATED param, transforms locations through GetTotalTransform(), finds nearest wall by curve.Project() distance, reads WINDOW_WIDTH/HEIGHT, places CR-Window-Opening with +1/12 ft tolerance.',
+    logic: ['Phase filter avoids existing / demo openings','GetTotalTransform() handles positioned + rotated links','Nearest wall by closest point projection','WINDOW_WIDTH + 1/12 ft = structural rough opening','Fails per window gracefully — skips, continues']
+  },
+  B6: {
+    name: 'Wall Openings V2',
+    prob: 'The nearest-wall heuristic mis-identifies hosts in complex wall configurations.',
+    how: 'Custom ISelectionFilter restricts picks to OST_Windows. Stores FamilyInstance.Host ElementId before deletion, deletes window, retrieves wall by stored Id, places opening on known host.',
+    logic: ['ISelectionFilter gives type-restricted pick loop','Host ElementId stored before delete — valid after','No nearest-wall heuristic — direct host reference','Same rough opening sizing as B5 (+1/12 ft)','Right fallback for irregular arch geometry']
+  },
+  B1: {
+    name: 'Column UP/DOWN Tags',
+    prob: '200 columns, each needing a tag indicating UP, DOWN, or UP/DOWN relative to the current level. Manual inspection = errors and hours.',
+    how: 'Reads base + top level elevations, compares to view GenLevel elevation with 0.1 ft tolerance. Two-pane UI: filter by type/material, confirm selection, verify tag family assignments. Places chosen tag type at column location point.',
+    logic: ['GenLevel from active view — context-aware','0.1 ft tolerance for float elevation comparison','Three tag types from one family — user-selected','Tag symbols activated before placement if needed','Nothing placed without UI confirmation']
+  },
+  B4: {
+    name: 'Align Framing Views',
+    prob: 'Viewports drift across a multi-sheet framing plan set. Twelve sheets, twelve manual offsets.',
+    how: 'Two-step UI: template sheet → target sheets + options. Finds ViewType.EngineeringPlan viewport on each sheet, reads GetBoxCenter() in sheet space, computes offset vector, calls MoveElement. Optional: copy crop box, align matching legends.',
+    logic: ['EngineeringPlan type (falls back to "framing" name)','GetBoxCenter() is sheet-space — pixel-exact','offset = template center − target center','Legends matched by view name across sheets','Titleblock origin reset ensures clean sheet space']
+  }
+};
+
+function pick(id) {
+  document.querySelectorAll('.tc').forEach(c => c.classList.remove('sel'));
+  const card = document.querySelector('[data-id="' + id + '"]');
+  if (card) card.classList.add('sel');
+  const t = T[id];
+  document.getElementById('d-id').textContent = id;
+  document.getElementById('d-name').textContent = t.name;
+  document.getElementById('d-prob').textContent = t.prob;
+  document.getElementById('d-how').textContent = t.how;
+  document.getElementById('d-logic').innerHTML = t.logic
+    .map(l => '<div class="li"><span class="lb">→</span><span>' + l + '</span></div>')
+    .join('');
+  document.getElementById('dp').classList.add('show');
+}
+</script>
+</body>
+</html>
