@@ -118,6 +118,38 @@ a {
   white-space: pre-wrap;
 }
 
+.project-markdown-container h1 {
+  font-size: 2.2rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
+
+.project-markdown-container h2 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.project-markdown-container h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.project-markdown-container hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 3rem 0;
+}
+
+.project-markdown-container strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .title-hero {
     font-size: 2.5rem;

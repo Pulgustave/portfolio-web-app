@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 const ProjectDetails = () => {
     const { id } = useParams();
@@ -68,6 +69,7 @@ const ProjectDetails = () => {
                 {/* Markdown Content Section */}
                 <div className="project-markdown-container">
                     <ReactMarkdown
+                        rehypePlugins={[rehypeRaw]}
                         components={{
                             p: ({node, ...props}) => <p className="project-details-desc" style={{ marginBottom: '1.5rem' }} {...props} />,
                             img: ({node, ...props}) => (
